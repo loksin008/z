@@ -1,0 +1,78 @@
+#!/bin/bash
+
+# Associative array of Indian states and their capitals
+declare -A state_capitals=(
+    ["Andhra Pradesh"]="Amaravati"
+    ["Arunachal Pradesh"]="Itanagar"
+    ["Assam"]="Dispur"
+    ["Bihar"]="Patna"
+    ["Chhattisgarh"]="Raipur"
+    ["Goa"]="Panaji"
+    ["Gujarat"]="Gandhinagar"
+    ["Haryana"]="Chandigarh"
+    ["Himachal Pradesh"]="Shimla"
+    ["Jharkhand"]="Ranchi"
+    ["Karnataka"]="Bengaluru"
+    ["Kerala"]="Thiruvananthapuram"
+    ["Madhya Pradesh"]="Bhopal"
+    ["Maharashtra"]="Mumbai"
+    ["Manipur"]="Imphal"
+    ["Meghalaya"]="Shillong"
+    ["Mizoram"]="Aizawl"
+    ["Nagaland"]="Kohima"
+    ["Odisha"]="Bhubaneswar"
+    ["Punjab"]="Chandigarh"
+    ["Rajasthan"]="Jaipur"
+    ["Sikkim"]="Gangtok"
+    ["Tamil Nadu"]="Chennai"
+    ["Telangana"]="Hyderabad"
+    ["Tripura"]="Agartala"
+    ["Uttar Pradesh"]="Lucknow"
+    ["Uttarakhand"]="Dehradun"
+    ["West Bengal"]="Kolkata"
+    ["Andaman and Nicobar Islands"]="Port Blair"
+    ["Chandigarh (Union Territory)"]="Chandigarh"
+    ["Dadra and Nagar Haveli and Daman and Diu"]="Daman"
+    ["Delhi"]="New Delhi"
+    ["Jammu and Kashmir"]="Srinagar (Summer), Jammu (Winter)"
+    ["Ladakh"]="Leh"
+    ["Lakshadweep"]="Kavaratti"
+    ["Puducherry"]="Pondicherry"
+)
+
+# Function to display all states and their capitals
+display_all_capitals() {
+    echo "States and Capitals of India"
+    echo "----------------------------"
+    for state in "${!state_capitals[@]}"; do
+        echo "$state - ${state_capitals[$state]}"
+    done
+}
+
+# Function to search for a state's capital
+search_capital() {
+    read -rp "Enter the state name: " state
+    capital=${state_capitals["$state"]}
+    if [[ -n $capital ]]; then
+        echo "The capital of $state is: $capital"
+    else
+        echo "State not found. Please check the name and try again."
+    fi
+}
+
+# Main menu
+while true; do
+    echo ""
+    echo "Choose an option:"
+    echo "1. Display all state capitals"
+    echo "2. Search for a state capital"
+    echo "3. Exit"
+    read -rp "Enter your choice: " choice
+
+    case $choice in
+        1) display_all_capitals ;;
+        2) search_capital ;;
+        3) echo "Exiting..."; break ;;
+        *) echo "Invalid option. Please try again." ;;
+    esac
+done
