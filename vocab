@@ -51,4 +51,4 @@ declare -A vegetables=(
     ["Carrot"]="गाजर" ["Potato"]="आलू" ["Onion"]="प्याज" ["Tomato"]="टमाटर" ["Spinach"]="पालक"
     ["Cabbage"]="पत्ता गोभी" ["Cauliflower"]="फूलगोभी" ["Peas"]="मटर" ["Capsicum"]="शिमला मिर्च" ["Radish"]="मूली"
     ["Cucumber"]="खीरा" ["Pumpkin"]="कद्दू" ["Brinjal"]="बैंगन" ["Bitter Gourd"]="कारेली" ["Bottle Gourd"]="लौकी"
-    ["Zucchini"]="जुचिनी" ["Beetroot"]="चुकंदर" ["Turnip
+    ["Zucchini"]="जुचिनी" ["Beetroot"]="चुकंदर"
