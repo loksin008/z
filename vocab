@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# Associative arrays for English to Hindi translations
+declare -A fruits=(
+    ["Apple"]="सेब"
+    ["Banana"]="केला"
+    ["Grapes"]="अंगूर"
+    ["Mango"]="आम"
+    ["Orange"]="संतरा"
+    ["Pineapple"]="अनानास"
+    ["Pomegranate"]="अनार"
+    ["Watermelon"]="तरबूज"
+    ["Papaya"]="पपीता"
+    ["Guava"]="अमरूद"
+)
+
+declare -A flowers=(
+    ["Rose"]="गुलाब"
+    ["Lotus"]="कमल"
+    ["Sunflower"]="सूरजमुखी"
+    ["Jasmine"]="चमेली"
+    ["Marigold"]="गेंदे का फूल"
+    ["Hibiscus"]="गुड़हल"
+    ["Daisy"]="गुलबहार"
+    ["Lily"]="कुमुदिनी"
+    ["Tulip"]="ट्यूलिप"
+    ["Orchid"]="ऑर्किड"
+)
+
+# Function to display all fruits and their Hindi meanings
+display_all_fruits() {
+    echo "Fruit Translations (English to Hindi)"
+    echo "-------------------------------------"
+    for fruit in "${!fruits[@]}"; do
+        echo "$fruit - ${fruits[$fruit]}"
+    done
+}
+
+# Function to display all flowers and their Hindi meanings
+display_all_flowers() {
+    echo "Flower Translations (English to Hindi)"
+    echo "--------------------------------------"
+    for flower in "${!flowers[@]}"; do
+        echo "$flower - ${flowers[$flower]}"
+    done
+}
+
+# Function to search for a fruit's Hindi meaning
+search_fruit() {
+    read -rp "Enter the fruit name (in English): " fruit
+    meaning=${fruits["$fruit"]}
+    if [[ -n $meaning ]]; then
+        echo "The Hindi translation of $fruit is: $meaning"
+    else
+        echo "Fruit not found. Please check the name and try again."
+    fi
+}
+
+# Function to search for a flower's Hindi meaning
+search_flower() {
+    read -rp "Enter the flower name (in English): " flower
+    meaning=${flowers["$flower"]}
+    if [[ -n $meaning ]]; then
+        echo "The Hindi translation of $flower is: $meaning"
+    else
+        echo "Flower not found. Please check the name and try again."
+    fi
+}
+
+# Main menu
+while true; do
+    echo ""
+    echo "Choose an option:"
+    echo "1. Display all fruit translations"
+    echo "2. Display all flower translations"
+    echo "3. Search for a fruit translation"
+    echo "4. Search for a flower translation"
+    echo "5. Exit"
+    read -rp "Enter your choice: " choice
+
+    case $choice in
+        1) display_all_fruits ;;
+        2) display_all_flowers ;;
+        3) search_fruit ;;
+        4) search_flower ;;
+        5) echo "Exiting..."; break ;;
+        *) echo "Invalid option. Please try again." ;;
+    esac
+done
