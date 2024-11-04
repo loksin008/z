@@ -1,0 +1,166 @@
+#!/bin/bash
+
+# Extensive Guide on Indian Geography, Government Officials, Freedom Fighters, and Key Industries
+
+echo "======================================="
+echo "     India's Geography and Key Data"
+echo "======================================="
+
+# Main Menu
+main_menu() {
+    echo "Explore Information about India:"
+    echo "1. Prime Ministers of India"
+    echo "2. Home Ministers of India"
+    echo "3. Defence Ministers of India"
+    echo "4. Freedom Fighters"
+    echo "5. Post Offices (Sample)"
+    echo "6. Postal Codes (Sample)"
+    echo "7. Life Insurance Companies in India"
+    echo "8. Bike Companies in India"
+    echo "9. Four-Wheeler Companies in India"
+    echo "10. Exit"
+    echo
+    read -p "Enter your choice [1-10]: " choice
+}
+
+# Prime Ministers of India
+prime_ministers() {
+    echo "List of Prime Ministers of India:"
+    echo "1. Jawaharlal Nehru (1947-1964)"
+    echo "2. Lal Bahadur Shastri (1964-1966)"
+    echo "3. Indira Gandhi (1966-1977, 1980-1984)"
+    echo "4. Morarji Desai (1977-1979)"
+    echo "5. Rajiv Gandhi (1984-1989)"
+    echo "6. Atal Bihari Vajpayee (1996, 1998-2004)"
+    echo "7. Manmohan Singh (2004-2014)"
+    echo "8. Narendra Modi (2014-present)"
+    echo
+}
+
+# Home Ministers of India
+home_ministers() {
+    echo "List of Home Ministers of India:"
+    echo "1. Sardar Vallabhbhai Patel (1947-1950)"
+    echo "2. Gulzarilal Nanda (1950-1955)"
+    echo "3. Indira Gandhi (1970-1973)"
+    echo "4. L.K. Advani (1998-2004)"
+    echo "5. P. Chidambaram (2008-2012)"
+    echo "6. Rajnath Singh (2014-2019)"
+    echo "7. Amit Shah (2019-present)"
+    echo
+}
+
+# Defence Ministers of India
+defence_ministers() {
+    echo "List of Defence Ministers of India:"
+    echo "1. Baldev Singh (1947-1952)"
+    echo "2. V.K. Krishna Menon (1957-1962)"
+    echo "3. Yashwantrao Chavan (1962-1966)"
+    echo "4. George Fernandes (1998-2004)"
+    echo "5. A.K. Antony (2006-2014)"
+    echo "6. Manohar Parrikar (2014-2017)"
+    echo "7. Rajnath Singh (2019-present)"
+    echo
+}
+
+# Freedom Fighters of India
+freedom_fighters() {
+    echo "Prominent Freedom Fighters of India:"
+    echo "1. Mahatma Gandhi"
+    echo "2. Bhagat Singh"
+    echo "3. Subhas Chandra Bose"
+    echo "4. Jawaharlal Nehru"
+    echo "5. Rani Lakshmibai"
+    echo "6. Bal Gangadhar Tilak"
+    echo "7. Sardar Vallabhbhai Patel"
+    echo "8. Sarojini Naidu"
+    echo "9. Lala Lajpat Rai"
+    echo "10. Chandrashekhar Azad"
+    echo
+}
+
+# Post Offices (Sample)
+post_offices() {
+    echo "Sample Post Offices in India:"
+    echo "1. Mumbai GPO, Maharashtra"
+    echo "2. Kolkata GPO, West Bengal"
+    echo "3. Chennai GPO, Tamil Nadu"
+    echo "4. Delhi GPO, New Delhi"
+    echo "5. Bengaluru GPO, Karnataka"
+    echo
+}
+
+# Postal Codes (Sample)
+postal_codes() {
+    echo "Sample Postal Codes in India:"
+    echo "1. 110001 - New Delhi GPO"
+    echo "2. 400001 - Mumbai GPO"
+    echo "3. 700001 - Kolkata GPO"
+    echo "4. 600001 - Chennai GPO"
+    echo "5. 560001 - Bengaluru GPO"
+    echo
+}
+
+# Life Insurance Companies in India
+insurance_companies() {
+    echo "Major Life Insurance Companies in India:"
+    echo "1. Life Insurance Corporation of India (LIC)"
+    echo "2. HDFC Life Insurance"
+    echo "3. SBI Life Insurance"
+    echo "4. ICICI Prudential Life Insurance"
+    echo "5. Max Life Insurance"
+    echo "6. Bajaj Allianz Life Insurance"
+    echo "7. Kotak Mahindra Life Insurance"
+    echo
+}
+
+# Bike Companies in India
+bike_companies() {
+    echo "Popular Bike Companies in India:"
+    echo "1. Hero MotoCorp"
+    echo "2. Bajaj Auto"
+    echo "3. Royal Enfield"
+    echo "4. TVS Motor Company"
+    echo "5. Honda Motorcycle and Scooter India"
+    echo "6. Yamaha Motor India"
+    echo "7. Suzuki Motorcycle India"
+    echo "8. Mahindra Two Wheelers"
+    echo
+}
+
+# Four-Wheeler Companies in India
+four_wheeler_companies() {
+    echo "Popular Four-Wheeler Companies in India:"
+    echo "1. Maruti Suzuki"
+    echo "2. Hyundai Motor India"
+    echo "3. Tata Motors"
+    echo "4. Mahindra & Mahindra"
+    echo "5. Honda Cars India"
+    echo "6. Toyota Kirloskar Motor"
+    echo "7. Ford India"
+    echo "8. Renault India"
+    echo
+}
+
+# Main function to display user's choice
+display_feature() {
+    case $1 in
+        1) prime_ministers ;;
+        2) home_ministers ;;
+        3) defence_ministers ;;
+        4) freedom_fighters ;;
+        5) post_offices ;;
+        6) postal_codes ;;
+        7) insurance_companies ;;
+        8) bike_companies ;;
+        9) four_wheeler_companies ;;
+        10) echo "Exiting the guide. Thank you for exploring India's information!"; exit 0 ;;
+        *) echo "Invalid choice. Please select a valid option." ;;
+    esac
+}
+
+# Main loop to navigate through features
+while true; do
+    main_menu
+    display_feature $choice
+done
