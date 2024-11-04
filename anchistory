@@ -36,3 +36,4 @@ display_period() {
             echo "---------------------------------------"
             echo "Vedic Period (1500-500 BCE)"
             echo "--------------------
+done
