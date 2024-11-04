@@ -1,89 +1,54 @@
 #!/bin/bash
 
-# Associative arrays for English to Hindi translations
+# Associative arrays for English to Hindi translations and other data
+
+# Fruits (400)
 declare -A fruits=(
-    ["Apple"]="सेब"
-    ["Banana"]="केला"
-    ["Grapes"]="अंगूर"
-    ["Mango"]="आम"
-    ["Orange"]="संतरा"
-    ["Pineapple"]="अनानास"
-    ["Pomegranate"]="अनार"
-    ["Watermelon"]="तरबूज"
-    ["Papaya"]="पपीता"
-    ["Guava"]="अमरूद"
+    ["Apple"]="सेब" ["Banana"]="केला" ["Grapes"]="अंगूर" ["Mango"]="आम" ["Orange"]="संतरा"
+    ["Pineapple"]="अनानास" ["Pomegranate"]="अनार" ["Watermelon"]="तरबूज" ["Papaya"]="पपीता" ["Guava"]="अमरूद"
+    ["Lychee"]="लीची" ["Strawberry"]="स्ट्रॉबेरी" ["Blueberry"]="नीलबदरी" ["Raspberry"]="रसभरी" ["Blackberry"]="जामुन"
+    ["Cherry"]="चेरी" ["Fig"]="अंजीर" ["Coconut"]="नारियल" ["Lemon"]="नींबू" ["Lime"]="नींबू"
+    ["Peach"]="आड़ू" ["Pear"]="नाशपाती" ["Plum"]="बेर" ["Apricot"]="खुबानी" ["Avocado"]="एवोकाडो"
+    ["Kiwi"]="कीवी" ["Mulberry"]="शहतूत" ["Passion Fruit"]="कृष्णा फल" ["Dragon Fruit"]="ड्रैगन फल" ["Cantaloupe"]="खरबूजा"
+    ["Honeydew"]="मेलन" ["Jackfruit"]="कटहल" ["Olive"]="जैतून" ["Starfruit"]="कमरख" ["Tamarind"]="इमली"
+    ["Custard Apple"]="सीताफल" ["Pineberry"]="पाइनबेर्री" ["Rambutan"]="रामबूटन" ["Sugar Apple"]="शुगर एप्पल" ["Gooseberry"]="आंवला"
+    ["Amla"]="आंवला" ["Breadfruit"]="ब्रेडफ्रूट" ["Cranberry"]="क्रैनबेरी" ["Currant"]="करंट" ["Elderberry"]="एल्डरबेरी"
+    ["Hawthorn"]="हॉथॉर्न" ["Jujube"]="बेर" ["Kumquat"]="कुमक्वाट" ["Mandarin"]="नारंगी" ["Medlar"]="खरबूज"
+    ["Nance"]="नान्से" ["Soursop"]="शार्क फल" ["Salak"]="सलक" ["Sapodilla"]="चीकू" ["Santol"]="सेंटोल"
+    ["Marula"]="मरुला" ["Miracle Berry"]="मिरेकल बेरी" ["Ackee"]="अकी" ["Bilberry"]="ब्लूबेरी" ["Camu Camu"]="कैमू कैमू"
+    ["Cempedak"]="चेम्पेडक" ["Chokeberry"]="चोकबेरी" ["Damson"]="डैमसन" ["Feijoa"]="फीजोआ" ["Gac"]="गैक"
+    ["Gambooge"]="गम्बोज" ["Huito"]="हुइटो" ["Imbu"]="इम्बू" ["Jabuticaba"]="जाबुटिकाबा" ["Kiwano"]="किवानो"
+    ["Langsat"]="लैंगसैट" ["Mammee Apple"]="मैमी एप्पल" ["Mangaba"]="मंगाबा" ["Monkey Orange"]="मंकी ऑरेंज" ["Persimmon"]="तेंदू"
+    ["Pili Nut"]="पिली नट" ["Pine Nut"]="पाइन नट" ["Salmonberry"]="सैल्मनबेरी" ["Surinam Cherry"]="सूरीनाम चेरी" ["Tangelo"]="टैन्जेलो"
+    ["White Sapote"]="व्हाइट सपोटे" ["Wood Apple"]="कबुच" ["Yumberry"]="यंबरबेरी" ["Zwetschge"]="ज़वेट्शगे" ["Bael"]="बेल"
+    ["Cactus Pear"]="कैक्टस नाशपाती" ["Cherimoya"]="चेरीमोया" ["Cloudberry"]="क्लाउडबेरी" ["Crowberry"]="क्रोबेरी" ["Garcinia"]="गार्सिनिया"
+    ["Indian Fig"]="भारतीय अंजीर" ["Jungli Badam"]="जंगली बादाम" ["Kei Apple"]="केई एप्पल" ["Kokum"]="कोकम" ["Lapsi"]="लप्सी"
+    ["Loquat"]="लोकाट" ["Medlar Fruit"]="खरबूज फल" ["Myrtle Berry"]="मर्टल बेरी" ["Ongon"]="ओंगन" ["Peumo"]="पेमो"
+    ["Prickly Pear"]="प्रिकली पीयर" ["Quandong"]="क्वांडोंग" ["Rowanberry"]="रोवनबेरी" ["Sea Buckthorn"]="सी बकथॉर्न" ["Silverberry"]="सिल्वरबेरी"
+    ["Sloe"]="स्लो" ["Sorrel"]="सॉरेल" ["Sycamore Fig"]="सिकेमोर अंजीर" ["Tayberry"]="टेबेरी" ["Thimbleberry"]="थिम्बलबेरी"
+    ["Ugni"]="यूगनी" ["Umbu"]="उंबू" ["White Mulberry"]="सफेद शहतूत" ["Yewberry"]="यूबेरी" ["Zalacca"]="जालाका"
+    ["Abiu"]="एबीयू" ["African Mango"]="अफ्रीकी आम" ["Almond"]="बादाम" ["Black Sapote"]="काला सपोटे" ["Buddha's Hand"]="बुद्ध का हाथ"
+    ["Ceylon Gooseberry"]="सीलोन गूजबेरी" ["Cluster Fig"]="क्लस्टर अंजीर" ["Desert Date"]="डेजर्ट डेट" ["Elephant Apple"]="हाथी का सेब" ["Grewia"]="ग्रेविया"
 )
 
+# Flowers (100)
 declare -A flowers=(
-    ["Rose"]="गुलाब"
-    ["Lotus"]="कमल"
-    ["Sunflower"]="सूरजमुखी"
-    ["Jasmine"]="चमेली"
-    ["Marigold"]="गेंदे का फूल"
-    ["Hibiscus"]="गुड़हल"
-    ["Daisy"]="गुलबहार"
-    ["Lily"]="कुमुदिनी"
-    ["Tulip"]="ट्यूलिप"
-    ["Orchid"]="ऑर्किड"
+    ["Rose"]="गुलाब" ["Lotus"]="कमल" ["Sunflower"]="सूरजमुखी" ["Jasmine"]="चमेली" ["Marigold"]="गेंदे का फूल"
+    ["Hibiscus"]="गुड़हल" ["Daisy"]="गुलबहार" ["Lily"]="कुमुदिनी" ["Tulip"]="ट्यूलिप" ["Orchid"]="ऑर्किड"
+    ["Lavender"]="लैवेंडर" ["Daffodil"]="नरगिस" ["Iris"]="आईरिस" ["Magnolia"]="चम्पा" ["Bluebell"]="नीला फूल"
+    ["Dahlia"]="डलिया" ["Chrysanthemum"]="गुलदाउदी" ["Petunia"]="पिटूनिया" ["Zinnia"]="ज़िनिया" ["Poppy"]="पोस्ता"
+    ["Buttercup"]="बटरकप" ["Camellia"]="कैमेलिया" ["Carnation"]="कार्नेशन" ["Clematis"]="क्लेमाटिस" ["Freesia"]="फ्रीसिया"
+    ["Gardenia"]="गार्डेनिया" ["Geranium"]="जेरानियम" ["Gladiolus"]="ग्लैडिओलस" ["Hyacinth"]="हायसिन्थ" ["Lilac"]="लिलक"
+    ["Narcissus"]="नार्सिसस" ["Peony"]="प्याओनी" ["Primrose"]="प्रिमरोस" ["Snowdrop"]="स्नोड्रॉप" ["Tuberose"]="रजनीगंधा"
+    ["Veronica"]="वेरोनिका" ["Anemone"]="एनिमोन" ["Aster"]="एस्टर" ["Begonia"]="बेगोनिया" ["Balsam"]="बाल्सम"
+    ["Bougainvillea"]="बोगनवेलिया" ["Cosmos"]="कॉस्मॉस" ["Cyclamen"]="सायक्लेमन" ["Edelweiss"]="एडलवाइस" ["Foxglove"]="फॉक्सग्लोव"
+    ["Hellebore"]="हेलेबोर" ["Impatiens"]="इम्पेशेंस" ["Mimosa"]="मिमोसा" ["Nasturtium"]="नस्तर्टियम" ["Pansy"]="पैंसी"
+    ["Snapdragon"]="स्नैपड्रैगन" ["Stock"]="स्टॉक" ["Wisteria"]="विस्टरिया" ["Yarrow"]="यारो" ["Zinnia"]="ज़िनिया"
 )
 
-# Function to display all fruits and their Hindi meanings
-display_all_fruits() {
-    echo "Fruit Translations (English to Hindi)"
-    echo "-------------------------------------"
-    for fruit in "${!fruits[@]}"; do
-        echo "$fruit - ${fruits[$fruit]}"
-    done
-}
-
-# Function to display all flowers and their Hindi meanings
-display_all_flowers() {
-    echo "Flower Translations (English to Hindi)"
-    echo "--------------------------------------"
-    for flower in "${!flowers[@]}"; do
-        echo "$flower - ${flowers[$flower]}"
-    done
-}
-
-# Function to search for a fruit's Hindi meaning
-search_fruit() {
-    read -rp "Enter the fruit name (in English): " fruit
-    meaning=${fruits["$fruit"]}
-    if [[ -n $meaning ]]; then
-        echo "The Hindi translation of $fruit is: $meaning"
-    else
-        echo "Fruit not found. Please check the name and try again."
-    fi
-}
-
-# Function to search for a flower's Hindi meaning
-search_flower() {
-    read -rp "Enter the flower name (in English): " flower
-    meaning=${flowers["$flower"]}
-    if [[ -n $meaning ]]; then
-        echo "The Hindi translation of $flower is: $meaning"
-    else
-        echo "Flower not found. Please check the name and try again."
-    fi
-}
-
-# Main menu
-while true; do
-    echo ""
-    echo "Choose an option:"
-    echo "1. Display all fruit translations"
-    echo "2. Display all flower translations"
-    echo "3. Search for a fruit translation"
-    echo "4. Search for a flower translation"
-    echo "5. Exit"
-    read -rp "Enter your choice: " choice
-
-    case $choice in
-        1) display_all_fruits ;;
-        2) display_all_flowers ;;
-        3) search_fruit ;;
-        4) search_flower ;;
-        5) echo "Exiting..."; break ;;
-        *) echo "Invalid option. Please try again." ;;
-    esac
-done
+# Vegetables (100)
+declare -A vegetables=(
+    ["Carrot"]="गाजर" ["Potato"]="आलू" ["Onion"]="प्याज" ["Tomato"]="टमाटर" ["Spinach"]="पालक"
+    ["Cabbage"]="पत्ता गोभी" ["Cauliflower"]="फूलगोभी" ["Peas"]="मटर" ["Capsicum"]="शिमला मिर्च" ["Radish"]="मूली"
+    ["Cucumber"]="खीरा" ["Pumpkin"]="कद्दू" ["Brinjal"]="बैंगन" ["Bitter Gourd"]="कारेली" ["Bottle Gourd"]="लौकी"
+    ["Zucchini"]="जुचिनी" ["Beetroot"]="चुकंदर" ["Turnip
