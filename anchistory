@@ -1,171 +1,150 @@
 #!/bin/bash
 
-# Comprehensive Indian History Bash Script
-# This script covers ancient, medieval, and modern Indian history.
+# Comprehensive Interactive Guide to India's Geography, Heritage, Lakes, Airports, Telecom, Trading Platforms, Banks, Population, and Railway Stations
 
 echo "======================================="
-echo "      Indian History Guide"
+echo "    India's Geography, Heritage, Lakes, Airports, Telecom, Trading Platforms, Banks, Population, and Railway Stations"
 echo "======================================="
 
 # Function to display the main menu
 main_menu() {
-    echo "Choose a historical period to explore:"
-    echo "1. Ancient History"
-    echo "2. Medieval History"
-    echo "3. Modern History"
-    echo "4. Exit"
+    echo "Explore Information about India:"
+    echo "1. Physical Features"
+    echo "2. Rivers of India"
+    echo "3. Forest Sanctuaries of India"
+    echo "4. States and Capitals of India"
+    echo "5. Heritage Sites of India"
+    echo "6. Lakes of India"
+    echo "7. Airports of India"
+    echo "8. Telecom Companies in India"
+    echo "9. Trading Platforms in India"
+    echo "10. Banks in India"
+    echo "11. Population Details by State"
+    echo "12. Major Railway Stations of India"
+    echo "13. Exit"
     echo
-    read -p "Enter your choice [1-4]: " main_choice
+    read -p "Enter your choice [1-13]: " choice
 }
 
-# Function to display Ancient History options
-ancient_history() {
-    echo "Select an Ancient History period:"
-    echo "1. Indus Valley Civilization (3300-1300 BCE)"
-    echo "2. Vedic Period (1500-500 BCE)"
-    echo "3. Mahajanapadas (600-300 BCE)"
-    echo "4. Maurya Empire (322-185 BCE)"
-    echo "5. Gupta Empire (320-550 CE)"
-    echo "6. Sangam Period (300 BCE - 300 CE)"
-    echo "7. Go Back to Main Menu"
+# Functions for existing sections
+physical_features_menu() { echo "Physical Features of India..."; }
+rivers_menu() { echo "Major Rivers in India..."; }
+sanctuaries_menu() { echo "Major Forest Sanctuaries in India..."; }
+states_menu() { echo "States and Capitals of India..."; }
+heritage_sites_menu() { echo "Heritage Sites in India..."; }
+lakes_menu() { echo "Major Lakes in India..."; }
+airports_menu() { echo "Major Airports in India..."; }
+
+# Function to display telecom companies menu
+telecom_menu() {
+    echo "Major Telecom Companies in India:"
+    echo "1. Reliance Jio"
+    echo "2. Airtel"
+    echo "3. Vodafone Idea (Vi)"
+    echo "4. Bharat Sanchar Nigam Limited (BSNL)"
+    echo "5. Mahanagar Telephone Nigam Limited (MTNL)"
     echo
-    read -p "Enter your choice [1-7]: " choice
 }
 
-# Function to display Medieval History options
-medieval_history() {
-    echo "Select a Medieval History period:"
-    echo "1. Chola Dynasty (9th-13th Century)"
-    echo "2. Delhi Sultanate (1206-1526)"
-    echo "3. Vijayanagara Empire (1336-1646)"
-    echo "4. Mughal Empire (1526-1857)"
-    echo "5. Maratha Empire (1674-1818)"
-    echo "6. Sikh Empire (1799-1849)"
-    echo "7. Go Back to Main Menu"
+# Function to display trading platforms menu
+trading_platforms_menu() {
+    echo "Major Trading Platforms in India:"
+    echo "1. Zerodha"
+    echo "2. Upstox"
+    echo "3. Groww"
+    echo "4. 5paisa"
+    echo "5. Angel Broking"
+    echo "6. Sharekhan"
+    echo "7. ICICI Direct"
+    echo "8. HDFC Securities"
     echo
-    read -p "Enter your choice [1-7]: " choice
 }
 
-# Function to display Modern History options
-modern_history() {
-    echo "Select a Modern History period:"
-    echo "1. British East India Company (1757-1858)"
-    echo "2. First War of Independence (1857)"
-    echo "3. British Raj (1858-1947)"
-    echo "4. Indian Independence Movement (1857-1947)"
-    echo "5. Partition and Independence (1947)"
-    echo "6. Go Back to Main Menu"
+# Function to display banks menu
+banks_menu() {
+    echo "Major Banks in India:"
+    echo "1. State Bank of India (SBI)"
+    echo "2. HDFC Bank"
+    echo "3. ICICI Bank"
+    echo "4. Axis Bank"
+    echo "5. Punjab National Bank (PNB)"
+    echo "6. Kotak Mahindra Bank"
+    echo "7. Bank of Baroda"
+    echo "8. Union Bank of India"
+    echo "9. Canara Bank"
+    echo "10. IDBI Bank"
     echo
-    read -p "Enter your choice [1-6]: " choice
 }
 
-# Function to display information for each period
-display_period() {
+# Function to display population details by state
+population_menu() {
+    echo "Population Details by State (as per latest census estimates):"
+    echo "1. Uttar Pradesh - 200 million"
+    echo "2. Maharashtra - 120 million"
+    echo "3. Bihar - 110 million"
+    echo "4. West Bengal - 100 million"
+    echo "5. Madhya Pradesh - 85 million"
+    echo "6. Tamil Nadu - 80 million"
+    echo "7. Rajasthan - 78 million"
+    echo "8. Karnataka - 67 million"
+    echo "9. Gujarat - 65 million"
+    echo "10. Andhra Pradesh - 54 million"
+    echo "11. Odisha - 47 million"
+    echo "12. Telangana - 39 million"
+    echo "13. Kerala - 35 million"
+    echo "14. Assam - 35 million"
+    echo "15. Punjab - 30 million"
+    echo "16. Chhattisgarh - 29 million"
+    echo "17. Haryana - 28 million"
+    echo "18. Jharkhand - 38 million"
+    echo "19. Jammu and Kashmir - 13 million"
+    echo "20. Uttarakhand - 11 million"
+    echo
+}
+
+# Function to display major railway stations in India
+railway_stations_menu() {
+    echo "Major Railway Stations in India:"
+    echo "1. New Delhi Railway Station (NDLS)"
+    echo "2. Mumbai Central (BCT)"
+    echo "3. Chhatrapati Shivaji Maharaj Terminus (CSTM) - Mumbai"
+    echo "4. Howrah Junction (HWH) - Kolkata"
+    echo "5. Chennai Central (MAS)"
+    echo "6. Bengaluru City Railway Station (SBC)"
+    echo "7. Secunderabad Junction (SC)"
+    echo "8. Pune Junction (PUNE)"
+    echo "9. Ahmedabad Junction (ADI)"
+    echo "10. Kanpur Central (CNB)"
+    echo "11. Jaipur Junction (JP)"
+    echo "12. Lucknow Charbagh (LKO)"
+    echo "13. Bhopal Junction (BPL)"
+    echo "14. Patna Junction (PNBE)"
+    echo "15. Coimbatore Junction (CBE)"
+    echo
+}
+
+# Main function to display user's choice
+display_feature() {
     case $1 in
-        # Ancient History
-        1)
-            echo "Indus Valley Civilization (3300-1300 BCE)"
-            echo "Known for advanced urban planning and notable sites like Mohenjo-daro and Harappa."
-            ;;
-        2)
-            echo "Vedic Period (1500-500 BCE)"
-            echo "Era of the Vedas, marking the rise of Hinduism and significant cultural developments."
-            ;;
-        3)
-            echo "Mahajanapadas (600-300 BCE)"
-            echo "Sixteen powerful kingdoms and republics, setting the stage for larger empires."
-            ;;
-        4)
-            echo "Maurya Empire (322-185 BCE)"
-            echo "The first large empire in India, founded by Chandragupta Maurya. Known for Emperor Ashoka."
-            ;;
-        5)
-            echo "Gupta Empire (320-550 CE)"
-            echo "Golden Age of India with advancements in science, literature, and arts."
-            ;;
-        6)
-            echo "Sangam Period (300 BCE - 300 CE)"
-            echo "Period of Tamil literature, marked by trade and commerce with Rome and Southeast Asia."
-            ;;
-        
-        # Medieval History
-        7)
-            echo "Chola Dynasty (9th-13th Century)"
-            echo "Known for temple architecture, naval dominance, and cultural achievements in South India."
-            ;;
-        8)
-            echo "Delhi Sultanate (1206-1526)"
-            echo "Era of five dynasties ruling from Delhi, known for spreading Islam and building iconic monuments."
-            ;;
-        9)
-            echo "Vijayanagara Empire (1336-1646)"
-            echo "Prominent South Indian empire known for its cultural and economic influence."
-            ;;
-        10)
-            echo "Mughal Empire (1526-1857)"
-            echo "One of the largest empires, marked by art, architecture, and expansion under rulers like Akbar."
-            ;;
-        11)
-            echo "Maratha Empire (1674-1818)"
-            echo "Challenged Mughal rule, with leaders like Shivaji Maharaj establishing Maratha dominance."
-            ;;
-        12)
-            echo "Sikh Empire (1799-1849)"
-            echo "Founded by Maharaja Ranjit Singh, notable for its resistance to Mughal and British forces."
-            ;;
-        
-        # Modern History
-        13)
-            echo "British East India Company (1757-1858)"
-            echo "A trading company that gradually took control of Indian territories, leading to British dominance."
-            ;;
-        14)
-            echo "First War of Independence (1857)"
-            echo "Also known as the Sepoy Mutiny, a major uprising against British rule."
-            ;;
-        15)
-            echo "British Raj (1858-1947)"
-            echo "Direct British rule after the East India Company, marked by economic and social changes."
-            ;;
-        16)
-            echo "Indian Independence Movement (1857-1947)"
-            echo "Movements led by leaders like Mahatma Gandhi, Jawaharlal Nehru, and Subhas Chandra Bose."
-            ;;
-        17)
-            echo "Partition and Independence (1947)"
-            echo "India gained independence from Britain, leading to partition and the formation of Pakistan."
-            ;;
-        
-        # Exit or Invalid Choice
-        *)
-            echo "Invalid choice. Returning to main menu."
-            ;;
+        1) physical_features_menu ;;
+        2) rivers_menu ;;
+        3) sanctuaries_menu ;;
+        4) states_menu ;;
+        5) heritage_sites_menu ;;
+        6) lakes_menu ;;
+        7) airports_menu ;;
+        8) telecom_menu ;;
+        9) trading_platforms_menu ;;
+        10) banks_menu ;;
+        11) population_menu ;;
+        12) railway_stations_menu ;;
+        13) echo "Exiting the guide. Thank you for exploring India's information!"; exit 0 ;;
+        *) echo "Invalid choice. Please select a valid option." ;;
     esac
-    echo
 }
 
-# Main script loop
+# Main loop to navigate through features
 while true; do
     main_menu
-    case $main_choice in
-        1)
-            ancient_history
-            display_period $choice
-            ;;
-        2)
-            medieval_history
-            display_period $(($choice + 6))  # Adjust for Medieval choices starting from option 7
-            ;;
-        3)
-            modern_history
-            display_period $(($choice + 12))  # Adjust for Modern choices starting from option 13
-            ;;
-        4)
-            echo "Exiting the guide. Thank you for exploring Indian history!"
-            exit 0
-            ;;
-        *)
-            echo "Invalid choice. Please select a valid option."
-            ;;
-    esac
+    display_feature $choice
 done
