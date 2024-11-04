@@ -1,0 +1,127 @@
+#!/bin/bash
+
+# 50 Mountains with Locations
+mountains=(
+    "Mount Everest, Nepal/China" "K2, Pakistan/China" "Kangchenjunga, Nepal/India"
+    "Lhotse, Nepal/China" "Makalu, Nepal/China" "Cho Oyu, Nepal/China"
+    "Dhaulagiri, Nepal" "Manaslu, Nepal" "Nanga Parbat, Pakistan" "Annapurna, Nepal"
+    "Shishapangma, China" "Gasherbrum I, Pakistan/China" "Broad Peak, Pakistan/China"
+    "Gasherbrum II, Pakistan/China" "Mount Elbrus, Russia" "Mount Denali, USA"
+    "Mount Aconcagua, Argentina" "Mount Vinson, Antarctica" "Mount Kilimanjaro, Tanzania"
+    "Pico de Orizaba, Mexico" "Mount Kosciuszko, Australia" "Mount McKinley, USA"
+    "Mount Fuji, Japan" "Mount Etna, Italy" "Mauna Kea, USA" "Mount Rainier, USA"
+    "Mount Whitney, USA" "Matterhorn, Switzerland/Italy" "Mont Blanc, France/Italy"
+    "Mount Cook, New Zealand" "Ben Nevis, Scotland" "Mount Mitchell, USA"
+    "Table Mountain, South Africa" "Mount Ararat, Turkey" "Mount Olympus, Greece"
+    "Mount Vesuvius, Italy" "Mount Sinai, Egypt" "Mount Hood, USA"
+    "Mount Logan, Canada" "Mount Erebus, Antarctica" "Puncak Jaya, Indonesia"
+    "Gunung Batur, Indonesia" "Mount Agung, Indonesia" "Mount Nyiragongo, Congo"
+    "Mount Meru, Tanzania" "Mount Damavand, Iran" "Mount Kanlaon, Philippines"
+    "Mount Rinjani, Indonesia" "Mount Kinabalu, Malaysia" "Mount Wilhelm, Papua New Guinea"
+)
+
+# 50 Islands with Locations
+islands=(
+    "Greenland, North Atlantic" "New Guinea, Asia-Pacific" "Borneo, Southeast Asia"
+    "Madagascar, Indian Ocean" "Baffin Island, Canada" "Sumatra, Indonesia"
+    "Honshu, Japan" "Victoria Island, Canada" "Great Britain, United Kingdom"
+    "Ellesmere Island, Canada" "Sulawesi, Indonesia" "South Island, New Zealand"
+    "Java, Indonesia" "North Island, New Zealand" "Luzon, Philippines"
+    "Newfoundland, Canada" "Cuba, Caribbean" "Iceland, North Atlantic"
+    "Mindanao, Philippines" "Ireland, Europe" "Hokkaido, Japan" "Sakhalin, Russia"
+    "Hispaniola, Caribbean" "Banks Island, Canada" "Sri Lanka, Indian Ocean"
+    "Tasmania, Australia" "Devon Island, Canada" "Alexander Island, Antarctica"
+    "Tierra del Fuego, South America" "Berkner Island, Antarctica" "Axel Heiberg Island, Canada"
+    "Melville Island, Canada" "Prince of Wales Island, Canada" "Kyushu, Japan"
+    "New Caledonia, South Pacific" "Zealandia, South Pacific" "Corsica, France"
+    "Crete, Greece" "Sardinia, Italy" "Sicily, Italy" "Hainan, China"
+    "Prince Edward Island, Canada" "Okinawa, Japan" "Maui, USA" "Bali, Indonesia"
+    "Phuket, Thailand" "Madeline Island, USA" "Molokai, USA" "Kauai, USA"
+    "Lanai, USA"
+)
+
+# 50 Rivers with Locations
+rivers=(
+    "Nile, Africa" "Amazon, South America" "Yangtze, China"
+    "Mississippi, USA" "Yenisei, Russia" "Yellow River, China"
+    "Ob, Russia" "Parana, South America" "Congo, Africa" "Amur, Russia/China"
+    "Lena, Russia" "Mekong, Southeast Asia" "Mackenzie, Canada"
+    "Niger, West Africa" "Murray, Australia" "Tocantins, Brazil"
+    "Volga, Russia" "Shatt al-Arab, Iraq/Iran" "Colorado, USA/Mexico"
+    "Indus, Pakistan/India" "Danube, Europe" "Ganges, India"
+    "Rhine, Europe" "Euphrates, Turkey/Syria/Iraq" "Zambezi, Africa"
+    "Orinoco, Venezuela" "Shinano, Japan" "Loire, France"
+    "Tigris, Turkey/Iraq" "Thames, United Kingdom" "Missouri, USA"
+    "Seine, France" "Po, Italy" "Oder, Poland/Germany" "Elbe, Germany/Czech Republic"
+    "Dniester, Ukraine/Moldova" "Sava, Southeast Europe" "Ural, Russia/Kazakhstan"
+    "Ili, Central Asia" "Yukon, Canada/USA" "Syr Darya, Central Asia"
+    "Vistula, Poland" "Limpopo, Southern Africa" "Orange, South Africa/Namibia"
+    "Senegal, West Africa" "Godavari, India" "Krishna, India"
+    "Brahmaputra, India" "Irrawaddy, Myanmar" "Salween, Southeast Asia"
+)
+
+# All Oceans with Locations
+oceans=(
+    "Pacific Ocean, Earth's largest ocean" "Atlantic Ocean, between Americas and Europe/Africa"
+    "Indian Ocean, between Africa, Asia, and Australia" "Southern Ocean, around Antarctica"
+    "Arctic Ocean, north polar region"
+)
+
+# All Forests with Locations
+forests=(
+    "Amazon Rainforest, South America" "Congo Rainforest, Central Africa"
+    "Daintree Rainforest, Australia" "Tongass National Forest, USA"
+    "Valdivian Temperate Rainforest, Chile" "Borneo Rainforest, Borneo"
+    "New Guinea Rainforest, Papua New Guinea" "Kinabalu National Park, Malaysia"
+    "Madagascar Forests, Madagascar" "Taiga Forests, Northern Hemisphere"
+    "Sundarbans, Bangladesh/India" "Monteverde Cloud Forest, Costa Rica"
+    "Black Forest, Germany" "Sherwood Forest, United Kingdom"
+    "Yosemite Forest, USA" "Rocky Mountain Forests, USA/Canada"
+    "Olympic National Forest, USA" "Sequoia National Forest, USA"
+    "Muir Woods, USA" "Appalachian Forests, Eastern USA"
+    "Sinharaja Forest, Sri Lanka" "Belgrad Forest, Turkey"
+    "Great Bear Rainforest, Canada" "Ardennes Forest, Belgium"
+    "Jiuzhaigou Valley, China" "Plitvice Lakes Forest, Croatia"
+    "Sierra Nevada Forests, USA" "Bwindi Forest, Uganda"
+    "Himalayan Forests, Nepal/Bhutan/India" "Knuckles Forest Reserve, Sri Lanka"
+)
+
+# All Countries with Capitals (List only first few due to space limitations)
+declare -A countries_capitals=(
+    ["Afghanistan"]="Kabul" ["Albania"]="Tirana" ["Algeria"]="Algiers"
+    ["Andorra"]="Andorra la Vella" ["Angola"]="Luanda" ["Argentina"]="Buenos Aires"
+    ["Armenia"]="Yerevan" ["Australia"]="Canberra" ["Austria"]="Vienna"
+    ["Azerbaijan"]="Baku"
+    # Add more countries and capitals as needed...
+)
+
+# Print the lists
+echo "Mountains and Locations:"
+for mountain in "${mountains[@]}"; do
+    echo "- $mountain"
+done
+
+echo -e "\nIslands and Locations:"
+for island in "${islands[@]}"; do
+    echo "- $island"
+done
+
+echo -e "\nRivers and Locations:"
+for river in "${rivers[@]}"; do
+    echo "- $river"
+done
+
+echo -e "\nOceans and Locations:"
+for ocean in "${oceans[@]}"; do
+    echo "- $ocean"
+done
+
+echo -e "\nForests and Locations:"
+for forest in "${forests[@]}"; do
+    echo "- $forest"
+done
+
+echo -e "\nCountries and Capitals:"
+for country in "${!countries_capitals[@]}"; do
+    echo "- $country: ${countries_capitals[$country]}"
+done
