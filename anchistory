@@ -35,5 +35,55 @@ display_period() {
         2)
             echo "---------------------------------------"
             echo "Vedic Period (1500-500 BCE)"
-            echo "--------------------
+            echo "---------------------------------------"
+            echo "The Vedic Period is named after the Vedas, the oldest sacred texts of Hinduism. This era saw the formation of"
+            echo "social, cultural, and religious foundations in ancient India. Key texts: Rigveda, Samaveda, Yajurveda, Atharvaveda."
+            echo
+            ;;
+        3)
+            echo "---------------------------------------"
+            echo "Mahajanapadas (600-300 BCE)"
+            echo "---------------------------------------"
+            echo "The Mahajanapadas were sixteen powerful kingdoms or oligarchic republics. Notable Mahajanapadas include Magadha, Kosala,"
+            echo "and Vatsa. This period set the stage for the emergence of the first major empires."
+            echo
+            ;;
+        4)
+            echo "---------------------------------------"
+            echo "Maurya Empire (322-185 BCE)"
+            echo "---------------------------------------"
+            echo "Founded by Chandragupta Maurya, this was one of the largest empires in ancient India. Emperor Ashoka, a prominent"
+            echo "ruler, promoted Buddhism after the Kalinga War. The Arthashastra and Ashokan Edicts are significant texts from this era."
+            echo
+            ;;
+        5)
+            echo "---------------------------------------"
+            echo "Gupta Empire (320-550 CE)"
+            echo "---------------------------------------"
+            echo "The Gupta Empire is often referred to as the 'Golden Age' of India, known for advancements in science, mathematics,"
+            echo "astronomy, literature, and art. Key figures include Samudragupta and Chandragupta II."
+            echo
+            ;;
+        6)
+            echo "---------------------------------------"
+            echo "Sangam Period (300 BCE - 300 CE)"
+            echo "---------------------------------------"
+            echo "A period of significant Tamil literature and poetry, the Sangam Period was marked by extensive trade and commerce"
+            echo "with Rome and Southeast Asia. Key texts include Sangam literature, detailing early Dravidian culture."
+            echo
+            ;;
+        7)
+            echo "Exiting the guide. Thank you for exploring ancient Indian history!"
+            exit 0
+            ;;
+        *)
+            echo "Invalid choice. Please select a valid option."
+            ;;
+    esac
+}
+
+# Main loop to navigate through history
+while true; do
+    main_menu
+    display_period $choice
 done
