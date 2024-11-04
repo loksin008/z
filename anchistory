@@ -1,89 +1,171 @@
 #!/bin/bash
 
-# Ancient Indian History Bash Script
-# This script provides an overview of significant periods, events, and personalities of ancient Indian history.
+# Comprehensive Indian History Bash Script
+# This script covers ancient, medieval, and modern Indian history.
 
 echo "======================================="
-echo "      Indian Ancient History Guide"
+echo "      Indian History Guide"
 echo "======================================="
 
 # Function to display the main menu
 main_menu() {
     echo "Choose a historical period to explore:"
+    echo "1. Ancient History"
+    echo "2. Medieval History"
+    echo "3. Modern History"
+    echo "4. Exit"
+    echo
+    read -p "Enter your choice [1-4]: " main_choice
+}
+
+# Function to display Ancient History options
+ancient_history() {
+    echo "Select an Ancient History period:"
     echo "1. Indus Valley Civilization (3300-1300 BCE)"
     echo "2. Vedic Period (1500-500 BCE)"
     echo "3. Mahajanapadas (600-300 BCE)"
     echo "4. Maurya Empire (322-185 BCE)"
     echo "5. Gupta Empire (320-550 CE)"
     echo "6. Sangam Period (300 BCE - 300 CE)"
-    echo "7. Exit"
+    echo "7. Go Back to Main Menu"
     echo
     read -p "Enter your choice [1-7]: " choice
 }
 
-# Function to display details about each period
+# Function to display Medieval History options
+medieval_history() {
+    echo "Select a Medieval History period:"
+    echo "1. Chola Dynasty (9th-13th Century)"
+    echo "2. Delhi Sultanate (1206-1526)"
+    echo "3. Vijayanagara Empire (1336-1646)"
+    echo "4. Mughal Empire (1526-1857)"
+    echo "5. Maratha Empire (1674-1818)"
+    echo "6. Sikh Empire (1799-1849)"
+    echo "7. Go Back to Main Menu"
+    echo
+    read -p "Enter your choice [1-7]: " choice
+}
+
+# Function to display Modern History options
+modern_history() {
+    echo "Select a Modern History period:"
+    echo "1. British East India Company (1757-1858)"
+    echo "2. First War of Independence (1857)"
+    echo "3. British Raj (1858-1947)"
+    echo "4. Indian Independence Movement (1857-1947)"
+    echo "5. Partition and Independence (1947)"
+    echo "6. Go Back to Main Menu"
+    echo
+    read -p "Enter your choice [1-6]: " choice
+}
+
+# Function to display information for each period
 display_period() {
     case $1 in
+        # Ancient History
         1)
-            echo "---------------------------------------"
             echo "Indus Valley Civilization (3300-1300 BCE)"
-            echo "---------------------------------------"
-            echo "The Indus Valley Civilization, one of the world's oldest civilizations, was known for its advanced urban planning,"
-            echo "architecture, and social organization. Major sites include Mohenjo-daro, Harappa, and Dholavira."
-            echo
+            echo "Known for advanced urban planning and notable sites like Mohenjo-daro and Harappa."
             ;;
         2)
-            echo "---------------------------------------"
             echo "Vedic Period (1500-500 BCE)"
-            echo "---------------------------------------"
-            echo "The Vedic Period is named after the Vedas, the oldest sacred texts of Hinduism. This era saw the formation of"
-            echo "social, cultural, and religious foundations in ancient India. Key texts: Rigveda, Samaveda, Yajurveda, Atharvaveda."
-            echo
+            echo "Era of the Vedas, marking the rise of Hinduism and significant cultural developments."
             ;;
         3)
-            echo "---------------------------------------"
             echo "Mahajanapadas (600-300 BCE)"
-            echo "---------------------------------------"
-            echo "The Mahajanapadas were sixteen powerful kingdoms or oligarchic republics. Notable Mahajanapadas include Magadha, Kosala,"
-            echo "and Vatsa. This period set the stage for the emergence of the first major empires."
-            echo
+            echo "Sixteen powerful kingdoms and republics, setting the stage for larger empires."
             ;;
         4)
-            echo "---------------------------------------"
             echo "Maurya Empire (322-185 BCE)"
-            echo "---------------------------------------"
-            echo "Founded by Chandragupta Maurya, this was one of the largest empires in ancient India. Emperor Ashoka, a prominent"
-            echo "ruler, promoted Buddhism after the Kalinga War. The Arthashastra and Ashokan Edicts are significant texts from this era."
-            echo
+            echo "The first large empire in India, founded by Chandragupta Maurya. Known for Emperor Ashoka."
             ;;
         5)
-            echo "---------------------------------------"
             echo "Gupta Empire (320-550 CE)"
-            echo "---------------------------------------"
-            echo "The Gupta Empire is often referred to as the 'Golden Age' of India, known for advancements in science, mathematics,"
-            echo "astronomy, literature, and art. Key figures include Samudragupta and Chandragupta II."
-            echo
+            echo "Golden Age of India with advancements in science, literature, and arts."
             ;;
         6)
-            echo "---------------------------------------"
             echo "Sangam Period (300 BCE - 300 CE)"
-            echo "---------------------------------------"
-            echo "A period of significant Tamil literature and poetry, the Sangam Period was marked by extensive trade and commerce"
-            echo "with Rome and Southeast Asia. Key texts include Sangam literature, detailing early Dravidian culture."
-            echo
+            echo "Period of Tamil literature, marked by trade and commerce with Rome and Southeast Asia."
             ;;
+        
+        # Medieval History
         7)
-            echo "Exiting the guide. Thank you for exploring ancient Indian history!"
+            echo "Chola Dynasty (9th-13th Century)"
+            echo "Known for temple architecture, naval dominance, and cultural achievements in South India."
+            ;;
+        8)
+            echo "Delhi Sultanate (1206-1526)"
+            echo "Era of five dynasties ruling from Delhi, known for spreading Islam and building iconic monuments."
+            ;;
+        9)
+            echo "Vijayanagara Empire (1336-1646)"
+            echo "Prominent South Indian empire known for its cultural and economic influence."
+            ;;
+        10)
+            echo "Mughal Empire (1526-1857)"
+            echo "One of the largest empires, marked by art, architecture, and expansion under rulers like Akbar."
+            ;;
+        11)
+            echo "Maratha Empire (1674-1818)"
+            echo "Challenged Mughal rule, with leaders like Shivaji Maharaj establishing Maratha dominance."
+            ;;
+        12)
+            echo "Sikh Empire (1799-1849)"
+            echo "Founded by Maharaja Ranjit Singh, notable for its resistance to Mughal and British forces."
+            ;;
+        
+        # Modern History
+        13)
+            echo "British East India Company (1757-1858)"
+            echo "A trading company that gradually took control of Indian territories, leading to British dominance."
+            ;;
+        14)
+            echo "First War of Independence (1857)"
+            echo "Also known as the Sepoy Mutiny, a major uprising against British rule."
+            ;;
+        15)
+            echo "British Raj (1858-1947)"
+            echo "Direct British rule after the East India Company, marked by economic and social changes."
+            ;;
+        16)
+            echo "Indian Independence Movement (1857-1947)"
+            echo "Movements led by leaders like Mahatma Gandhi, Jawaharlal Nehru, and Subhas Chandra Bose."
+            ;;
+        17)
+            echo "Partition and Independence (1947)"
+            echo "India gained independence from Britain, leading to partition and the formation of Pakistan."
+            ;;
+        
+        # Exit or Invalid Choice
+        *)
+            echo "Invalid choice. Returning to main menu."
+            ;;
+    esac
+    echo
+}
+
+# Main script loop
+while true; do
+    main_menu
+    case $main_choice in
+        1)
+            ancient_history
+            display_period $choice
+            ;;
+        2)
+            medieval_history
+            display_period $(($choice + 6))  # Adjust for Medieval choices starting from option 7
+            ;;
+        3)
+            modern_history
+            display_period $(($choice + 12))  # Adjust for Modern choices starting from option 13
+            ;;
+        4)
+            echo "Exiting the guide. Thank you for exploring Indian history!"
             exit 0
             ;;
         *)
             echo "Invalid choice. Please select a valid option."
             ;;
     esac
-}
-
-# Main loop to navigate through history
-while true; do
-    main_menu
-    display_period $choice
 done
