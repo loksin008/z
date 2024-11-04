@@ -52,7 +52,7 @@ declare -A pots=(
 # Body Parts (partial list)
 declare -A body_parts=(
     ["Head"]="सिर" ["Eyes"]="आंखें" ["Nose"]="नाक" ["Mouth"]="मुख" ["Ear"]="कान"
-    # (Continue adding all body parts)
+    # (Continue adding all body parts
 )
 
 # Plant Parts (main parts)
