@@ -1,0 +1,24 @@
+
+2. **Instructions to Set Up on GitHub**
+
+- Create a new GitHub repository.
+- Upload `india_map.sh` to the repository.
+- Create a `README.md` file with instructions on how to use the script.
+
+**Example `README.md`**
+```markdown
+# ASCII Map of India
+
+This Bash script displays a simple ASCII art map of India.
+
+## How to Run
+1. Make the script executable:
+   ```bash
+   chmod +x india_map.sh
+   ```
+2. Run the script:
+   ```bash
+   ./india_map.sh
+   ```
+
+## Example Output
