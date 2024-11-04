@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Create directories for the data
+mkdir -p healthcare_data/hospitals
+mkdir -p healthcare_data/medicines
+mkdir -p healthcare_data/doctors
+
+# Hospital Codes
+cat <<EOL > healthcare_data/hospitals/hospitals.txt
+# Hospital Codes
+MH-001: King Edward Memorial Hospital, Mumbai
+DL-002: AIIMS, New Delhi
+TN-003: Apollo Hospital, Chennai
+KA-004: Manipal Hospital, Bengaluru
+EOL
+
+# Medicines and Their Salts
+cat <<EOL > healthcare_data/medicines/medicines.txt
+# Medicines and Their Salts
+PAR-001: Paracetamol
+Salt: Acetaminophen
+IBP-002: Ibuprofen
+Salt: Ibuprofen
+AMO-003: Amoxicillin
+Salt: Amoxicillin Trihydrate
+EOL
+
+# Famous Doctors
+cat <<EOL > healthcare_data/doctors/doctors.txt
+# Famous Doctors in India
+CAR-001: Dr. Devi Shetty (Cardiologist)
+NEU-002: Dr. B. K. Mishra (Neurologist)
+ONC-003: Dr. Ramesh S. (Oncologist)
+EOL
+
+# Output completion message
+echo "Data files created in healthcare_data directory."
