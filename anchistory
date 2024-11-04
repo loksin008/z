@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Ancient Indian History Bash Script
+# This script provides an overview of significant periods, events, and personalities of ancient Indian history.
+
+echo "======================================="
+echo "      Indian Ancient History Guide"
+echo "======================================="
+
+# Function to display the main menu
+main_menu() {
+    echo "Choose a historical period to explore:"
+    echo "1. Indus Valley Civilization (3300-1300 BCE)"
+    echo "2. Vedic Period (1500-500 BCE)"
+    echo "3. Mahajanapadas (600-300 BCE)"
+    echo "4. Maurya Empire (322-185 BCE)"
+    echo "5. Gupta Empire (320-550 CE)"
+    echo "6. Sangam Period (300 BCE - 300 CE)"
+    echo "7. Exit"
+    echo
+    read -p "Enter your choice [1-7]: " choice
+}
+
+# Function to display details about each period
+display_period() {
+    case $1 in
+        1)
+            echo "---------------------------------------"
+            echo "Indus Valley Civilization (3300-1300 BCE)"
+            echo "---------------------------------------"
+            echo "The Indus Valley Civilization, one of the world's oldest civilizations, was known for its advanced urban planning,"
+            echo "architecture, and social organization. Major sites include Mohenjo-daro, Harappa, and Dholavira."
+            echo
+            ;;
+        2)
+            echo "---------------------------------------"
+            echo "Vedic Period (1500-500 BCE)"
+            echo "--------------------
