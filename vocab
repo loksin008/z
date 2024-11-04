@@ -2,10 +2,6 @@
 
 # Associative arrays for English to Hindi translations and other data
 
-# #!/bin/bash
-
-# Associative arrays for English to Hindi translations and other data
-
 # Fruits (partial list of 400)
 declare -A fruits=(
     ["Apple"]="सेब" ["Banana"]="केला" ["Grapes"]="अंगूर" ["Mango"]="आम" ["Orange"]="संतरा"
@@ -52,7 +48,7 @@ declare -A pots=(
 # Body Parts (partial list)
 declare -A body_parts=(
     ["Head"]="सिर" ["Eyes"]="आंखें" ["Nose"]="नाक" ["Mouth"]="मुख" ["Ear"]="कान"
-    # (Continue adding all body parts
+    # (Continue adding all body parts)
 )
 
 # Plant Parts (main parts)
@@ -135,12 +131,6 @@ search_item() {
     fi
 }
 
-
-    else
-        echo "$category not found. Please check the name and try again."
-    fi
-}
-
 # Main menu
 while true; do
     echo ""
@@ -194,4 +184,3 @@ while true; do
         *) echo "Invalid option. Please try again." ;;
     esac
 done
-
