@@ -147,4 +147,5 @@ case $choice in
     5) show_forests ;;
     6) show_countries ;;
     q) echo "Exiting script." ;;
-    *)
+    *) echo "Invalid option. Please
+done
