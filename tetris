@@ -1,0 +1,166 @@
+#!/bin/bash
+
+# Game settings
+rows=20            # Number of rows in the grid
+cols=10            # Number of columns in the grid
+interval=0.3       # Fall interval (in seconds)
+grid=()            # Array representing the grid
+score=0            # Player's score
+
+# Tetrimino shapes
+shapes=(
+    "0 1 2 3"    # I-shape
+    "0 1 2 11"   # L-shape
+    "1 2 10 11"  # Z-shape
+    "0 1 10 11"  # O-shape
+    "0 1 2 11"   # T-shape
+)
+
+# Initialize the grid
+init_grid() {
+    for ((i=0; i<rows; i++)); do
+        for ((j=0; j<cols; j++)); do
+            grid[$((i * cols + j))]="."
+        done
+    done
+}
+
+# Draw the grid
+draw_grid() {
+    tput clear
+    for ((i=0; i<rows; i++)); do
+        for ((j=0; j<cols; j++)); do
+            tput cup $((i + 1)) $((j + 1))
+            echo -n "${grid[$((i * cols + j))]}"
+        done
+    done
+    tput cup $((rows + 2)) 0
+    echo "Score: $score"
+}
+
+# Spawn a new tetrimino
+spawn_tetrimino() {
+    shape_index=$((RANDOM % ${#shapes[@]}))
+    shape=(${shapes[shape_index]})
+    position=0
+}
+
+# Check if the current tetrimino can move
+can_move() {
+    for block in "${shape[@]}"; do
+        local new_row=$((position / cols + block / cols + dy))
+        local new_col=$((position % cols + block % cols + dx))
+        if (( new_col < 0 || new_col >= cols || new_row >= rows )); then
+            return 1
+        fi
+        if [[ "${grid[$((new_row * cols + new_col))]}" != "." ]]; then
+            return 1
+        fi
+    done
+    return 0
+}
+
+# Place tetrimino on the grid
+place_tetrimino() {
+    for block in "${shape[@]}"; do
+        local row=$((position / cols + block / cols))
+        local col=$((position % cols + block % cols))
+        grid[$((row * cols + col))]="#"
+    done
+}
+
+# Remove tetrimino from the grid
+remove_tetrimino() {
+    for block in "${shape[@]}"; do
+        local row=$((position / cols + block / cols))
+        local col=$((position % cols + block % cols))
+        grid[$((row * cols + col))]="."
+    done
+}
+
+# Move the tetrimino down
+move_down() {
+    ((dy=1, dx=0))
+    if can_move; then
+        ((position += cols))
+    else
+        place_tetrimino
+        clear_lines
+        spawn_tetrimino
+        if ! can_move; then
+            game_over
+        fi
+    fi
+}
+
+# Move left or right
+move_sideways() {
+    ((dy=0))
+    if can_move; then
+        ((position += dx))
+    fi
+}
+
+# Rotate the tetrimino (simplified rotation)
+rotate() {
+    local new_shape=()
+    for block in "${shape[@]}"; do
+        local row=$((block / cols))
+        local col=$((block % cols))
+        new_shape+=($((col * cols + (cols - row - 1))))
+    done
+    local old_shape=("${shape[@]}")
+    shape=("${new_shape[@]}")
+    if ! can_move; then
+        shape=("${old_shape[@]}")
+    fi
+}
+
+# Clear full lines and update score
+clear_lines() {
+    for ((i=0; i<rows; i++)); do
+        full=true
+        for ((j=0; j<cols; j++)); do
+            if [[ "${grid[$((i * cols + j))]}" == "." ]]; then
+                full=false
+                break
+            fi
+        done
+        if $full; then
+            for ((k=i * cols - 1; k>=0; k--)); do
+                grid[$((k + cols))]="${grid[$k]}"
+            done
+            ((score++))
+        fi
+    done
+}
+
+# End the game
+game_over() {
+    tput cup $((rows + 3)) 0
+    echo "Game Over! Final Score: $score"
+    exit
+}
+
+# Main game loop
+main_loop() {
+    spawn_tetrimino
+    while true; do
+        draw_grid
+        remove_tetrimino
+        move_down
+        place_tetrimino
+
+        read -t "$interval" -n 1 input
+        case "$input" in
+            a) ((dx=-1)); move_sideways ;;
+            d) ((dx=1)); move_sideways ;;
+            w) rotate ;;
+            q) game_over ;;
+        esac
+    done
+}
+
+# Start the game
+init_grid
+main_loop
