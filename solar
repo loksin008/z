@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Simulation parameters
+total_days=365 # Number of days to simulate
+earth_orbit_radius=1    # Average distance from Earth to Sun (AU)
+moon_orbit_radius=0.0026 # Average distance from Earth to Moon (AU)
+
+# Function to calculate solar and lunar eclipses
+calculate_eclipse() {
+    local earth_angle=$1
+    local moon_angle=$2
+
+    # Calculate the angular distance between the Sun, Earth, and Moon
+    local angle_diff=$(echo "$moon_angle - $earth_angle" | bc -l)
+    
+    # Normalize angle difference to range [0, 2*pi]
+    if (( $(echo "$angle_diff < 0" | bc -l) )); then
+        angle_diff=$(echo "$angle_diff + 2 * 3.14159265359" | bc -l)
+    fi
+
+    # Check for solar eclipse: Earth is between Sun and Moon
+    if (( $(echo "$angle_diff < 0.01" | bc -l) )); then
+        echo "Solar Eclipse"
+    fi
+
+    # Check for lunar eclipse: Moon is between Sun and Earth
+    if (( $(echo "$angle_diff > 3.13" | bc -l) && $(echo "$angle_diff < 3.15" | bc -l) )); then
+        echo "Lunar Eclipse"
+    fi
+}
+
+# Simulate each day in the orbital cycle
+for ((day=1; day<=total_days; day++)); do
+    # Calculate Earth's angle around the Sun (simplified circular orbit)
+    earth_angle=$(echo "2 * 3.14159265359 * $day / 365" | bc -l)
+
+    # Calculate Moon's angle around the Earth (simplified circular orbit)
+    moon_angle=$(echo "2 * 3.14159265359 * $day / 27.32" | bc -l)
+
+    # Output current simulation day and check for eclipse events
+    echo "Day $day: Earth Angle = $earth_angle, Moon Angle = $moon_angle"
+    calculate_eclipse "$earth_angle" "$moon_angle"
+done
