@@ -1,0 +1,166 @@
+#!/bin/bash
+
+# Game settings
+rows=20             # Screen height
+cols=40             # Screen width
+player_pos=$((cols / 2))  # Starting position of the player
+score=0             # Player's score
+enemy_rate=5        # Enemy spawn rate (lower is faster)
+projectiles=()      # Array to track projectile positions
+enemies=()          # Array to track enemy positions
+
+# Initialize screen
+clear_screen() {
+    tput clear
+}
+
+draw_text() {
+    tput cup "$1" "$2"
+    echo -n "$3"
+}
+
+# Draw game boundary
+draw_boundary() {
+    for ((i=0; i<=cols; i++)); do
+        draw_text 0 "$i" "-"
+        draw_text "$rows" "$i" "-"
+    done
+}
+
+# Draw player
+draw_player() {
+    draw_text "$((rows - 1))" "$player_pos" "A"
+}
+
+# Move player left
+move_left() {
+    if (( player_pos > 1 )); then
+        ((player_pos--))
+    fi
+}
+
+# Move player right
+move_right() {
+    if (( player_pos < cols - 1 )); then
+        ((player_pos++))
+    fi
+}
+
+# Fire projectile
+fire_projectile() {
+    projectiles+=("$((rows - 2)) $player_pos")
+}
+
+# Spawn an enemy at a random column
+spawn_enemy() {
+    local enemy_col=$((RANDOM % (cols - 2) + 1))
+    enemies+=("1 $enemy_col")
+}
+
+# Update positions of projectiles and enemies
+update_positions() {
+    # Move projectiles up
+    for ((i=0; i<${#projectiles[@]}; i++)); do
+        local row=${projectiles[$i]% *}
+        local col=${projectiles[$i]#* }
+        ((row--))
+
+        # Remove projectile if it goes off-screen
+        if (( row < 1 )); then
+            unset projectiles[$i]
+        else
+            projectiles[$i]="$row $col"
+        fi
+    done
+
+    # Move enemies down
+    for ((i=0; i<${#enemies[@]}; i++)); do
+        local row=${enemies[$i]% *}
+        local col=${enemies[$i]#* }
+        ((row++))
+
+        # Remove enemy if it goes off-screen
+        if (( row >= rows - 1 )); then
+            unset enemies[$i]
+        else
+            enemies[$i]="$row $col"
+        fi
+    done
+}
+
+# Detect collisions between projectiles and enemies
+detect_collisions() {
+    for ((i=0; i<${#projectiles[@]}; i++)); do
+        local proj_row=${projectiles[$i]% *}
+        local proj_col=${projectiles[$i]#* }
+        for ((j=0; j<${#enemies[@]}; j++)); do
+            local enemy_row=${enemies[$j]% *}
+            local enemy_col=${enemies[$j]#* }
+            if (( proj_row == enemy_row && proj_col == enemy_col )); then
+                # Destroy enemy and projectile
+                unset projectiles[$i]
+                unset enemies[$j]
+                ((score++))
+                break
+            fi
+        done
+    done
+}
+
+# Draw all objects (player, enemies, projectiles)
+draw_objects() {
+    clear_screen
+    draw_boundary
+    draw_player
+
+    # Draw projectiles
+    for projectile in "${projectiles[@]}"; do
+        local row=${projectile% *}
+        local col=${projectile#* }
+        draw_text "$row" "$col" "|"
+    done
+
+    # Draw enemies
+    for enemy in "${enemies[@]}"; do
+        local row=${enemy% *}
+        local col=${enemy#* }
+        draw_text "$row" "$col" "V"
+    done
+
+    # Draw score
+    draw_text "$((rows + 1))" 0 "Score: $score"
+}
+
+# Main game loop
+main_loop() {
+    local frame=0
+    while true; do
+        # Handle enemy spawning
+        if (( frame % enemy_rate == 0 )); then
+            spawn_enemy
+        fi
+
+        # Update positions and check for collisions
+        update_positions
+        detect_collisions
+        draw_objects
+
+        # Capture player input
+        read -t 0.1 -n 1 input
+        case "$input" in
+            a) move_left ;;
+            d) move_right ;;
+            w) fire_projectile ;;
+            q) break ;; # Quit the game
+        esac
+
+        ((frame++))
+    done
+
+    echo -e "\nGame Over! Final Score: $score"
+}
+
+# Start the game
+clear_screen
+draw_boundary
+main_loop
