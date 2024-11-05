@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Check if the data file exists
+data_file="up_cities.csv"
+if [[ ! -f "$data_file" ]]; then
+    echo "Data file '$data_file' not found. Please make sure it exists in the same directory as this script."
+    exit 1
+fi
+
+# Function to display city information
+display_city_info() {
+    local city_data=("$@")
+    echo "---------------------------------"
+    echo "City: ${city_data[0]}"
+    echo "Population: ${city_data[1]} million"
+    echo "Heritage Sites: ${city_data[2]}"
+    echo "Major Rivers: ${city_data[3]}"
+    echo "Nearby Mountains/Hills: ${city_data[4]}"
+    echo "---------------------------------"
+}
+
+# Function to load and display the main menu with cities from the CSV file
+main_menu() {
+    echo "Welcome to the Uttar Pradesh City Information Database"
+    echo "Please select a city to view its information:"
+    
+    # Read cities from the CSV file
+    mapfile -t cities < <(tail -n +2 "$data_file" | cut -d',' -f1)
+    for i in "${!cities[@]}"; do
+        echo "$((i+1)). ${cities[i]}"
+    done
+    echo "Q. Quit"
+    
+    read -p "Enter the number of the city (or Q to quit): " choice
+
+    if [[ "$choice" =~ ^[1-9][0-9]*$ ]] && (( choice >= 1 && choice <= ${#cities[@]} )); then
+        # Extract the selected city's data
+        selected_line=$(tail -n +2 "$data_file" | sed -n "${choice}p")
+        IFS=',' read -r -a city_data <<< "$selected_line"
+        display_city_info "${city_data[@]}"
+    elif [[ "$choice" == "Q" || "$choice" == "q" ]]; then
+        echo "Exiting the database. Thank you!"
+        exit 0
+    else
+        echo "Invalid choice. Please try again."
+    fi
+}
+
+# Main loop
+while true; do
+    main_menu
+done
