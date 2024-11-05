@@ -1,11 +1,23 @@
 #!/bin/bash
 
 # Parameters
-total_frames=200       # Number of frames for the simulation
-earth_orbit_radius=10  # Radius of Earth's orbit in "spaces"
-moon_orbit_radius=2    # Radius of Moon's orbit in "spaces"
+total_frames=500               # Total number of frames for the simulation
+center_x=40                    # Center x-position for the Sun
+center_y=12                    # Center y-position for the Sun
 
-# Screen control
+# Orbital settings for each planet: name, orbit radius, and orbital period (in frames)
+planets=(
+    "Mercury 3 15 ☿"
+    "Venus 5 30 ♀"
+    "Earth 7 60 🌍"
+    "Mars 9 90 ♂"
+    "Jupiter 12 150 ♃"
+    "Saturn 15 200 ♄"
+    "Uranus 18 250 ♅"
+    "Neptune 21 300 ♆"
+)
+
+# Screen control functions
 clear_screen() {
     tput clear
 }
@@ -19,38 +31,35 @@ draw_text() {
     echo -n "$3"
 }
 
-# Function to draw the Sun, Earth, and Moon
+# Function to calculate position in a circular orbit
+calculate_position() {
+    local radius=$1
+    local period=$2
+    local frame=$3
+    local angle=$(echo "2 * 3.14159 * $frame / $period" | bc -l)
+    local x=$(echo "$radius * c($angle)" | bc -l)
+    local y=$(echo "$radius * s($angle)" | bc -l)
+    echo "$x $y"
+}
+
+# Function to draw the solar system
 draw_solar_system() {
     local frame=$1
-
-    # Calculate Earth's position
-    earth_angle=$(echo "2 * 3.14159 * $frame / 60" | bc -l)
-    earth_x=$(echo "$earth_orbit_radius * c($earth_angle)" | bc -l)
-    earth_y=$(echo "$earth_orbit_radius * s($earth_angle)" | bc -l)
-
-    # Center Sun at the middle of the screen
-    center_x=20
-    center_y=20
-    sun_x=$center_x
-    sun_y=$center_y
-
-    # Calculate Earth's screen position relative to Sun
-    earth_screen_x=$(printf "%.0f" $(echo "$center_x + $earth_x" | bc))
-    earth_screen_y=$(printf "%.0f" $(echo "$center_y - $earth_y" | bc))
-
-    # Calculate Moon's position around Earth
-    moon_angle=$(echo "2 * 3.14159 * $frame / 10" | bc -l)
-    moon_x=$(echo "$moon_orbit_radius * c($moon_angle)" | bc -l)
-    moon_y=$(echo "$moon_orbit_radius * s($moon_angle)" | bc -l)
-
-    moon_screen_x=$(printf "%.0f" $(echo "$earth_screen_x + $moon_x" | bc))
-    moon_screen_y=$(printf "%.0f" $(echo "$earth_screen_y - $moon_y" | bc))
-
-    # Draw Sun, Earth, and Moon
     clear_screen
-    draw_text "$sun_y" "$sun_x" "☀️"    # Sun
-    draw_text "$earth_screen_y" "$earth_screen_x" "🌍"  # Earth
-    draw_text "$moon_screen_y" "$moon_screen_x" "🌑"    # Moon
+
+    # Draw the Sun at the center
+    draw_text "$center_y" "$center_x" "☀️"
+
+    # Loop through each planet and calculate its position
+    for planet in "${planets[@]}"; do
+        IFS=' ' read -r name radius period symbol <<< "$planet"
+        pos=$(calculate_position "$radius" "$period" "$frame")
+        planet_x=$(printf "%.0f" $(echo "$center_x + ${pos% *}" | bc))
+        planet_y=$(printf "%.0f" $(echo "$center_y - ${pos#* }" | bc))
+
+        # Draw the planet at the calculated position
+        draw_text "$planet_y" "$planet_x" "$symbol"
+    done
 }
 
 # Main animation loop
